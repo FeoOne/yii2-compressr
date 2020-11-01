@@ -1,28 +1,23 @@
 <?php
 
-namespace nabu\yii2\compressr\compress;
+namespace nabu\yii2\compressr\css;
+
+use Minify_CSSmin;
 
 use Yii;
 
-use JShrink\Minifier;
-
-use yii\base\Exception;
-use yii\helpers\FileHelper;
+use nabu\yii2\compressr\base\BaseFilesCompressor;
 
 /**
- * Class JsFilesCompressor
- * @package nabu\yii2\compressr\resource
+ * Class CssFilesCompressor
+ * @package nabu\yii2\compressr\css
  */
-class JsFilesCompressor extends BaseFilesCompressor
+class CssFilesCompressor extends BaseFilesCompressor
 {
     /**
      * @var string
      */
     public $dirName;
-    /**
-     * @var bool
-     */
-    public $flaggedComments;
 
     /**
      * @param array $files
@@ -38,14 +33,14 @@ class JsFilesCompressor extends BaseFilesCompressor
         $assetsFilePath = '';
 
         $this->processFiles($files, $internalFiles, $externalFiles);
-        $this->makeAssetsPaths($internalFiles, 'js', $this->dirName, $fileName, $assetsDirPath, $assetsFilePath);
+        $this->makeAssetsPaths($internalFiles, 'css', $this->dirName, $fileName, $assetsDirPath, $assetsFilePath);
 
         if (file_exists($assetsFilePath)) {
             return $this->makeResultFiles($this->dirName,
                 $fileName,
                 $assetsFilePath,
                 $externalFiles,
-                ['yii\helpers\Html', 'jsFile']);
+                ['yii\helpers\Html', 'cssFile']);
         }
 
         if (!$this->bakeAndWriteContent($internalFiles, $assetsDirPath, $assetsFilePath)) {
@@ -56,7 +51,7 @@ class JsFilesCompressor extends BaseFilesCompressor
             $fileName,
             $assetsFilePath,
             $externalFiles,
-            ['yii\helpers\Html', 'jsFile']);
+            ['yii\helpers\Html', 'cssFile']);
     }
 
     /**
@@ -67,26 +62,19 @@ class JsFilesCompressor extends BaseFilesCompressor
      */
     private function bakeAndWriteContent(array $internalFiles, string $assetsDirPath, string $assetsFilePath) : bool
     {
-        if (empty($internalFiles)) {
-            return true;
-        }
-
         $content = [];
         foreach ($internalFiles as $relativePath) {
             $absolutePath = Yii::getAlias('@webroot') . $relativePath;
             $content[] = trim(file_get_contents($absolutePath));
         }
 
-        $content = implode(";\n", $content);
+        $content = implode("\n", $content);
 
-        try {
-            $content = Minifier::minify($content, ['flaggedComments' => $this->flaggedComments]);
-        }
-        catch (\Exception $e) {
-            Yii::error("Can't minify javascript: {$e->getMessage()}", self::class);
-            Yii::error($e->getMessage(), self::class);
-            return false;
-        }
+        $content = Minify_CSSmin::minify($content, [
+            'compress'         => true,
+            'removeCharsets'   => true,
+            'preserveComments' => false,
+        ]);
 
         if (!$this->createAssetsDirectoryIfNeeded($assetsDirPath)) {
             return false;

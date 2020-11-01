@@ -1,12 +1,13 @@
 <?php
 
-namespace nabu\yii2\compressr\compress;
+namespace nabu\yii2\compressr\css;
 
 use yii\base\BaseObject;
+use yii\base\InvalidConfigException;
 
 /**
  * Class CssCompressor
- * @package nabu\yii2\compressr\resource
+ * @package nabu\yii2\compressr\css
  */
 class CssCompressor extends BaseObject
 {
@@ -18,7 +19,19 @@ class CssCompressor extends BaseObject
     /**
      * @var bool
      */
-    public $enableCache;
+    public $cacheInlineParts;
+
+    /**
+     * @param array $parts
+     * @return array
+     * @throws InvalidConfigException
+     */
+    public function compressParts(array $parts) : array
+    {
+        return (new CssPartsCompressor([
+            'cacheInlineParts' => $this->cacheInlineParts,
+        ]))->compress($parts);
+    }
 
     /**
      * @param array $files

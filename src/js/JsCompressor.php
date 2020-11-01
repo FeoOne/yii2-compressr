@@ -1,12 +1,13 @@
 <?php
 
-namespace nabu\yii2\compressr\compress;
+namespace nabu\yii2\compressr\js;
 
 use yii\base\BaseObject;
+use yii\base\InvalidConfigException;
 
 /**
  * Class JsCompressor
- * @package nabu\yii2\compressr\resource
+ * @package nabu\yii2\compressr\js
  */
 class JsCompressor extends BaseObject
 {
@@ -17,7 +18,7 @@ class JsCompressor extends BaseObject
     /**
      * @var bool
      */
-    public $enableCache;
+    public $cacheInlineParts;
     /**
      * @var bool
      */
@@ -26,12 +27,13 @@ class JsCompressor extends BaseObject
     /**
      * @param array $parts
      * @return array
+     * @throws InvalidConfigException
      */
     public function compressParts(array $parts) : array
     {
         return (new JsPartsCompressor([
             'flaggedComments' => $this->flaggedComments,
-            'enableCache' => $this->enableCache,
+            'cacheInlineParts' => $this->cacheInlineParts,
         ]))->compress($parts);
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace nabu\yii2\compressr\compress;
+namespace nabu\yii2\compressr\base;
 
 use Yii;
 

@@ -6,7 +6,7 @@ namespace nabu\yii2\compressr\html;
  * Class HtmlFormatStrategy
  * @package nabu\yii2\compressr\html
  */
-class HtmlFormatStrategy
+class HtmlCompressStrategy
 {
     public const NONE   = 0;
     public const MRCLAY = 1;
