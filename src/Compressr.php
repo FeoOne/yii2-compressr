@@ -136,25 +136,25 @@ class Compressr extends Component implements BootstrapInterface
         ]);
 
         if (!empty($view->js)) {
-            Yii::beginProfile('Compressing inline javascript.');
+            Yii::beginProfile('Compressing inline javascript.', self::class);
             foreach ($view->js as $pos => $parts) {
                 if (empty($parts)) {
                     continue;
                 }
                 $view->js[$pos] = $jsCompressor->compressParts($parts);
             }
-            Yii::endProfile('Compressing inline javascript.');
+            Yii::endProfile('Compressing inline javascript.', self::class);
         }
 
         if (!empty($view->jsFiles)) {
-            Yii::beginProfile('Compressing javascript files.');
+            Yii::beginProfile('Compressing javascript files.', self::class);
             foreach ($view->jsFiles as $pos => $files) {
                 if (empty($files)) {
                     continue;
                 }
                 $view->jsFiles[$pos] = $jsCompressor->compressFiles($files);
             }
-            Yii::endProfile('Compressing javascript files.');
+            Yii::endProfile('Compressing javascript files.', self::class);
         }
     }
 
@@ -169,15 +169,15 @@ class Compressr extends Component implements BootstrapInterface
         ]);
 
         if (!empty($view->css)) {
-            Yii::beginProfile('Compressing css parts.');
+            Yii::beginProfile('Compressing inline css.', self::class);
             $view->css = $cssCompressor->compressParts($view->css);
-            Yii::endProfile('Compressing css parts.');
+            Yii::endProfile('Compressing inline css.', self::class);
         }
 
         if (!empty($view->cssFiles)) {
-            Yii::beginProfile('Compressing css files.');
+            Yii::beginProfile('Compressing css files.', self::class);
             $view->cssFiles = $cssCompressor->compressFiles($view->cssFiles);
-            Yii::endProfile('Compressing css files.');
+            Yii::endProfile('Compressing css files.', self::class);
         }
     }
 
@@ -187,7 +187,7 @@ class Compressr extends Component implements BootstrapInterface
      */
     private function compressHtml($content) : string
     {
-        Yii::beginProfile('Compressing html.');
+        Yii::beginProfile('Compressing html.', self::class);
         switch ($this->htmlCompressStrategy) {
             case HtmlCompressStrategy::MRCLAY: {
                 $result = MrclayHtmlCompressor::compress($content);
@@ -201,7 +201,7 @@ class Compressr extends Component implements BootstrapInterface
                 $result = &$content;
             }
         }
-        Yii::endProfile('Compressing html.');
+        Yii::endProfile('Compressing html.', self::class);
 
         return $result;
     }
