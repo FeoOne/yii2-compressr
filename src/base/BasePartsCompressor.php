@@ -34,7 +34,7 @@ class BasePartsCompressor extends BaseObject
 
         $js = $cache->get($key);
         if ($js === false) {
-            $parts = call_user_func($compressor, $parts);
+            $parts = call_user_func($compressor);
             $cache->set($key, $parts);
         } else {
             $parts = $js;

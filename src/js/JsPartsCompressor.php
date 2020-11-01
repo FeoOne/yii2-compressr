@@ -34,7 +34,9 @@ class JsPartsCompressor extends BasePartsCompressor
     public function compress(array $parts) : array
     {
         return $this->cacheInlineParts
-            ? $this->getFromCacheOrCompressAndCache($parts, 'compressr-js', [$this, 'compressParts'])
+            ? $this->getFromCacheOrCompressAndCache($parts, 'compressr-js', function () use ($parts) : array {
+                return $this->compressParts($parts);
+            })
             : $this->compressParts($parts);
     }
 

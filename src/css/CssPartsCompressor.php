@@ -27,7 +27,9 @@ class CssPartsCompressor extends BasePartsCompressor
     public function compress(array $parts) : array
     {
         return $this->cacheInlineParts
-            ? $this->getFromCacheOrCompressAndCache($parts, 'compressr-css', [$this, 'compressParts'])
+            ? $this->getFromCacheOrCompressAndCache($parts, 'compressr-css', function () use ($parts) : array {
+                return $this->compressParts($parts);
+            })
             : $this->compressParts($parts);
     }
 
