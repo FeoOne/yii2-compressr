@@ -5,7 +5,7 @@ thus relieving the developer from having to strictly control what assets used in
 
 **This also makes the page load faster by reducing the page size and reducing the loading of additional files.**
 
-##### Javascript
+#### Javascript
 
 Extension combines all included .js files in a page, minifies it and include result to the page as a single .js file.
 This generated file is cached.
@@ -13,7 +13,7 @@ This generated file is cached.
 All inline javascript is minified and stays in the same place on the page.
 You can set option to cache this generated parts to prevent multiple generation of the same code parts. 
 
-##### CSS
+#### CSS
 
 Like javascript processing, all .css files are minified and included in the page as a single .css file.
 This generated file is cached.
@@ -21,7 +21,7 @@ This generated file is cached.
 All inline CSS is combined and minified.
 Like javascript processing, you can set option to cache this generated code parts.
 
-##### HTML
+#### HTML
 
 Extension also provides ability to minify whole HTML on page.
 There are two generation strategies used in component:
@@ -29,16 +29,12 @@ There are two generation strategies used in component:
 * [mrclay](https://github.com/mrclay/minify)
 * [tylerhall](https://github.com/tylerhall/html-compressor)
 
-***
-
 # Install
 
 Add `"nabu/yii2-compressr": "dev-master"` to `composer.json` or run
 ```
 composer require --prefer-dist nabu/yii2-compressr "dev-master"
 ```
-
-***
 
 # Usage
 
@@ -67,8 +63,6 @@ composer require --prefer-dist nabu/yii2-compressr "dev-master"
     ]
 ]
 ```
-
-***
 
 # Profile
 
