@@ -3,7 +3,7 @@
 This extension provides ability to process and combine local assets, 
 thus relieving the developer from having to strictly control what assets used in project and how they organized.
 
-**It's also improve page generation speed and reduce page size.**
+**This also makes the page load faster by reducing the page size and reducing the loading of additional files.**
 
 ##### Javascript
 
