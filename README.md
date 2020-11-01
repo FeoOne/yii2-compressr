@@ -29,12 +29,16 @@ There are two generation strategies used in component:
 * [mrclay](https://github.com/mrclay/minify)
 * [tylerhall](https://github.com/tylerhall/html-compressor)
 
+***
+
 # Install
 
 Add `"nabu/yii2-compressr": "dev-master"` to `composer.json` or run
 ```
 composer require --prefer-dist nabu/yii2-compressr "dev-master"
 ```
+
+***
 
 # Usage
 
@@ -63,6 +67,8 @@ composer require --prefer-dist nabu/yii2-compressr "dev-master"
     ]
 ]
 ```
+
+***
 
 # Profile
 
