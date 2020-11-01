@@ -1,5 +1,5 @@
 {
-  "name": "FeoOne/yii2-compressr",
+  "name": "nabu/yii2-compressr",
   "description": "",
   "keywords": ["yii2", "asset", "js", "css", "html", "compress", "compressor", "process", "processor", "auto"],
   "homepage": "https://github.com/FeoOne/yii2-compressr",
@@ -11,9 +11,9 @@
   },
   "authors": [
     {
-      "name": "Feo",
+      "name": "Nabu Software",
       "email": "feobbc@gmail.com"
-    },
+    }
   ],
   "require": {
     "php": ">=7.1.0",
