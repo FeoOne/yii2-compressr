@@ -66,4 +66,10 @@ composer require --prefer-dist nabu/yii2-compressr "dev-master"
 
 # Profile
 
-![Profile](https://feoone.github.io/yii2-compressr-profile.png "Profiling stats")
+First time page called:
+
+![Profile](https://feoone.github.io/compressr-profile-first.png "Profiling stats first call")
+
+Subsequent times with caching:
+
+![Profile](https://feoone.github.io/compressr-profile-cache.png "Profiling stats first call")
