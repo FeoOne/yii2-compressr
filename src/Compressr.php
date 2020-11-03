@@ -185,7 +185,7 @@ class Compressr extends Component implements BootstrapInterface
      * @param string|null $content
      * @return string
      */
-    private function compressHtml(?string $content) : string
+    private function compressHtml(?string $content) : ?string
     {
         Yii::beginProfile('Compressing html.', self::class);
         switch ($this->htmlCompressStrategy) {

@@ -12,7 +12,7 @@ class TylerHtmlCompressor
      * @param string|null $content
      * @return string
      */
-    public static function compress(?string $content) : string
+    public static function compress(?string $content) : ?string
     {
         return is_null($content) ? $content : self::html_compress($content, ['no-comments' => true]);
     }
