@@ -11,11 +11,11 @@ use Minify_HTML;
 class MrclayHtmlCompressor
 {
     /**
-     * @param $content
+     * @param string|null $content
      * @return string
      */
-    public static function compress(string $content) : string
+    public static function compress(?string $content) : string
     {
-        return Minify_HTML::minify($content);
+        return is_null($content) ? $content : Minify_HTML::minify($content);
     }
 }

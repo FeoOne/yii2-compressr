@@ -182,10 +182,10 @@ class Compressr extends Component implements BootstrapInterface
     }
 
     /**
-     * @param $content
+     * @param string|null $content
      * @return string
      */
-    private function compressHtml($content) : string
+    private function compressHtml(?string $content) : string
     {
         Yii::beginProfile('Compressing html.', self::class);
         switch ($this->htmlCompressStrategy) {
@@ -198,7 +198,7 @@ class Compressr extends Component implements BootstrapInterface
                 break;
             }
             default: {
-                $result = &$content;
+                $result = $content;
             }
         }
         Yii::endProfile('Compressing html.', self::class);
