@@ -31,9 +31,9 @@ There are two generation strategies used in component:
 
 # Install
 
-Add `"nabu/yii2-compressr": ">=0.0.1"` to `composer.json` or run
+Add `"nabu/yii2-compressr": ">=0.0.2"` to `composer.json` or run
 ```
-composer require --prefer-dist nabu/yii2-compressr ">=0.0.1"
+composer require --prefer-dist nabu/yii2-compressr ">=0.0.2"
 ```
 
 # Usage
